@@ -10,6 +10,10 @@ import java.util.function.Function;
 public class EmployeeDTOToDAOConverter implements Function<EmployeeDTO, EmployeeDAO> {
     @Override
     public EmployeeDAO apply(EmployeeDTO employeeDTO) {
-        return null;
+        return EmployeeDAO.builder()
+                .id(employeeDTO.getId())
+                .name(employeeDTO.getName())
+                .age(employeeDTO.getAge())
+                .build();
     }
 }

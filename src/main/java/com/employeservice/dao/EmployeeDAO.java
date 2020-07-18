@@ -21,5 +21,5 @@ public class EmployeeDAO {
     @GeneratedValue
     private Integer id;
     private String name;
-    private String age;
+    private Integer age;
 }
