@@ -18,10 +18,10 @@ import java.util.Collections;
 @Component
 @RequiredArgsConstructor
 public class EmployeeProcessor {
-    private EmployeeDAOToDTOConverter employeeDAOToDTOConverter;
-    private EmployeeDTOToDAOConverter employeeDTOToDAOConverter;
-    private EmployeesToDTOConverter employeesToDTOConverter;
-    private EmployeeRepository employeeRepository;
+    private final EmployeeDAOToDTOConverter employeeDAOToDTOConverter;
+    private final EmployeeDTOToDAOConverter employeeDTOToDAOConverter;
+    private final EmployeesToDTOConverter employeesToDTOConverter;
+    private final EmployeeRepository employeeRepository;
 
     public Mono<EmployeeDTO> saveEmp(final EmployeeDTO employeeDTO) {
         return Mono.just(employeeDTO)
@@ -43,7 +43,7 @@ public class EmployeeProcessor {
                 .map(employeeRepository::findAllById)
                 .map(employeesToDTOConverter::apply)
                 .map(lst -> lst.stream().findFirst()
-                        .orElse( null))
+                        .orElse(null))
                 .onErrorResume(err -> Mono.error(EmployeeServiceException.builder()
                         .domainErrorDTO(DomainErrorDTO.builder()
                                 .errorId("002")

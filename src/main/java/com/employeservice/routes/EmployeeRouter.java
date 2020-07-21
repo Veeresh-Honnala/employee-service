@@ -2,20 +2,20 @@ package com.employeservice.routes;
 
 import com.employeservice.handlers.EmployeeHandler;
 import com.employeservice.handlers.ErrorHandler;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RequestPredicates;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 
-import static jdk.nashorn.internal.runtime.PropertyDescriptor.GET;
 
 @Configuration
+@RequiredArgsConstructor
+public class EmployeeRouter {
 
-public class EmloyeeRouter {
-
-    private EmployeeHandler employeeHandler;
-    private ErrorHandler errorHandler;
+    private final EmployeeHandler employeeHandler;
+    private final ErrorHandler errorHandler;
 
     @Bean
     public RouterFunction routes() {
